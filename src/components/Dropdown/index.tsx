@@ -95,6 +95,7 @@ const DropdownComponent = React.forwardRef<IDropdownRef, DropdownProps<any>>(
       closeModalWhenSelectedItem = true,
       excludeItems = [],
       excludeSearchItems = [],
+      placeholderVisible = true
     } = props;
 
     const ref = useRef<View>(null);
@@ -745,7 +746,8 @@ const DropdownComponent = React.forwardRef<IDropdownRef, DropdownProps<any>>(
         ref={ref}
         onLayout={_measure}
       >
-        {_renderDropdown()}
+        {/* disable default placeholder, use ref.open() instead */}
+        {placeholderVisible ? _renderDropdown() : null}
         {_renderModal()}
       </View>
     );
